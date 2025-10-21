@@ -16,6 +16,11 @@ variable "ec2_name_tag" {
   default     = "My ec2 instance"
 }
 
+variable "ec2_key_name" {
+  type        = string
+  description = "SSH key"
+}
+
 # output variables
 
 output "ec2_ip" {
