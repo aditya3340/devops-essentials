@@ -7,13 +7,13 @@ terraform {
   }
 
   backend "s3" {
-    
-    bucket = "amzn-s3-terraform-backend-adi3340" #s3 bucket name
-    key = "terraform/dev/terraform.tfstate"
-    region = "us-east-1"
+
+    bucket  = "amzn-s3-terraform-backend" #s3 bucket name
+    key     = "terraform/dev/terraform.tfstate"
+    region  = "us-east-1"
     encrypt = true
     # dynamodb_table = "my-terraform-lock-table" for DynamoDB locking
-    use_lockfile = true  # Recommeded for s3-native locking
+    # use_lockfile = true # Recommeded for s3-native locking
   }
 }
 
@@ -21,30 +21,34 @@ provider "aws" {
   region = "us-east-1"
 }
 
-module "vpc" {
-  source  = "terraform-aws-modules/vpc/aws"
-  version = "6.5.0"
+# module "vpc" {
+#   source  = "terraform-aws-modules/vpc/aws"
+#   version = "6.5.0"
 
-  name = "example-vpc"
+#   name = "example-vpc"
 
-  cidr = "10.0.0.0/16"
+#   cidr = "10.0.0.0/16"
 
-  azs = ["us-east-1a", "us-east-1b"]
+#   azs = ["us-east-1a", "us-east-1b"]
 
-  public_subnets  = ["10.0.1.0/24"]
-  private_subnets = ["10.0.0.0/24"]
+#   public_subnets  = ["10.0.1.0/24"]
+#   private_subnets = ["10.0.0.0/24"]
 
-  enable_nat_gateway = true
-  single_nat_gateway = true
+#   enable_nat_gateway = true
+#   single_nat_gateway = true
 
-  tags = {
-    Enviroment = "test"
-  }
+#   tags = {
+#     Enviroment = "test"
+#   }
 
-}
+# }
 
 resource "aws_instance" "ec2_instance" {
-  ami = "ami-0bdd88bd06d16ba03"
+  ami           = "ami-0bdd88bd06d16ba03"
   instance_type = "t2.micro"
   # subnet_id = module.vpc.public_subnets[0]
+  tags = {
+    "Name": "test_ec2"
+    "environment": "dev"
+  }
 }

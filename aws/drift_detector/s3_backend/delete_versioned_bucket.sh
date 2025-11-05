@@ -12,7 +12,7 @@ if [[ -z "$BUCKET_NAME" ]]; then
   exit 1
 fi
 
-echo "🧹 Cleaning up S3 bucket: $BUCKET_NAME ..."
+echo "Cleaning up S3 bucket: $BUCKET_NAME ..."
 
 # Delete all object versions
 aws s3api list-object-versions \
