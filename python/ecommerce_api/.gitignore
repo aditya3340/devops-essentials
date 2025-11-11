@@ -1,0 +1,63 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+.eggs/
+*.log
+
+# ---- Virtual Environments ----
+.env
+.venv
+venv/
+ENV/
+env/
+env.bak/
+fastapienv
+fastapienv_windows
+
+# ---- IDE / Editor ----
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ---- Testing ----
+.coverage
+htmlcov/
+.tox/
+pytest_cache/
+
+# ---- Build / Distribution ----
+build/
+dist/
+*.spec
+
+# ---- Docker ----
+# Ignore environment and build artifacts
+docker-compose.override.yml
+*.env
+.env.*
+*.bak
+*.tmp
+
+# ---- FastAPI specific ----
+# (If you generate SQLite DBs or temp uploads)
+*.db
+*.sqlite3
+uploads/
+instance/
+
+# ---- OS files ----
+.DS_Store
+Thumbs.db
+
+# ---- Cache ----
+__pycache__/
+*.cache
+.cache/
+.mypy_cache/
+.pytest_cache/
