@@ -1,5 +1,11 @@
 name: "Demo github workflow"
 on: push
 jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: log message
+              run: echo "Hello"
+
     
         
