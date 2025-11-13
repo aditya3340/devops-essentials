@@ -6,6 +6,13 @@ jobs:
         steps:
             - name: log message
               run: echo "Hello"
+<<<<<<< HEAD
             - name: main branch changes
               run: echo "main branch change"
+=======
+
+            - name: added this workflow in feature branch
+              run: echo "github-workflow-branch test"
+    
+>>>>>>> github-workflow-branch
         
