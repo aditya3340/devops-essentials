@@ -6,6 +6,6 @@ jobs:
         steps:
             - name: log message
               run: echo "Hello"
-
-    
+            - name: main branch changes
+              run: echo "main branch change"
         
