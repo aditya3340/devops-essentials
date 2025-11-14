@@ -3,11 +3,20 @@ on:
   workflow_call:
 
 jobs:
-  example_job:
-    name: test workflow
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
-      - name: step1
-        run: echo "testing reusable workflow."
-
-        
+      - uses: actions/checkout@v5
+        with:
+          sparse-checkout: |
+            python/ecommerce_api
+      - name: Set up python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          architecture: 'x64'
+      - name: Display Python version
+        run: python -c "import sys; print(sys.version)"
+      - name: check the scm contents
+        run: ls -ll ecommerce_api
+    

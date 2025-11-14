@@ -1,10 +1,10 @@
-name: Deployment of Pyhton Application
+name: Deployment of Python Application
 on:
     push:
         branches:
             - 'dev'
-        paths:
-            - 'python/ecommerce_api/**'
+        # paths:
+        #     - 'python/ecommerce_api/**'
 jobs:
     reusable-workflow:
         uses: ./.github/workflows/reuseable_workflow.yaml
