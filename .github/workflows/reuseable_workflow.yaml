@@ -6,10 +6,12 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-        with:
-          sparse-checkout: |
-            python/ecommerce_api
+      - name: checkout repository
+        uses: actions/checkout@v5
+      - name: Checking directories
+        run: |
+          echo "Current working dir: $PWD"
+          ls -ll $PWD
       - name: Set up python 3.11
         uses: actions/setup-python@v5
         with:
