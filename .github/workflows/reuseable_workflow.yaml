@@ -25,18 +25,13 @@ jobs:
         with:
           python-version: '3.11'
           architecture: 'x64'
-      - name: Display Python version
-        run: python -c "import sys; print(sys.version)"
+          
       - name: Installing the dependencies and lint project
         working-directory: ./ecommerce_api
         run: | 
           echo "Checking current working directory: $PWD"
           ls -ll
           pip install -r requirements.txt
+          echo "Linting and formatting the project"
           ruff check .
-      # - name: List dependencies
-      #   run: pip freeze
-      # - name: Linting the project
-      #   run: |
-      #     ruff check .
-      #     ruff format .
+          ruff format .
