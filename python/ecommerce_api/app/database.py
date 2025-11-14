@@ -1,11 +1,9 @@
 import os
-from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import time
 
-# load_dotenv()
 
 POSTGRES_USER = os.getenv("POSTGRES_USER")
 POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD")
@@ -29,7 +27,7 @@ def wait_for_db(max_retries: int = 5, delay_seconds: int = 2):
     for attempt in range(1, max_retries + 1):
         try:
             
-            with engine.connect() as conn:
+            with engine.connect():
                 print("Database connection successful!")
                 return
         except Exception as e:
