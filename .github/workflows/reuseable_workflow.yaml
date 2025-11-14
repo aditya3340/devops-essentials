@@ -9,6 +9,7 @@ jobs:
       - name: checkout repository
         uses: actions/checkout@v5
       - name: Checking directories
+        working-directory: ./python/ecommerce_api
         run: |
           echo "Current working dir: $PWD"
           ls -ll $PWD
@@ -19,6 +20,3 @@ jobs:
           architecture: 'x64'
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
-      - name: check the scm contents
-        run: ls -ll ecommerce_api
-    
