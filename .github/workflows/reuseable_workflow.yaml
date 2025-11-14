@@ -8,11 +8,18 @@ jobs:
     steps:
       - name: checkout repository
         uses: actions/checkout@v5
-      - name: Checking directories
-        working-directory: ./python/ecommerce_api
+      # - name: Checking directories
+      #   working-directory: ./python/ecommerce_api
+      #   run: |
+      #     echo "Current working dir: $PWD"
+      #     ls -ll $PWD
+      - name: Moving content of the application to the root
         run: |
-          echo "Current working dir: $PWD"
-          ls -ll $PWD
+          echo "current working directory $PWD"
+          echo "moving content of $PWD/python/ecommerce_api to root"
+          mv ./python/ecommerce_api/ .
+          echo "checking the current working directories content."
+          ls -ll 
       - name: Set up python 3.11
         uses: actions/setup-python@v5
         with:
