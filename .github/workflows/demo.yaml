@@ -10,5 +10,5 @@ jobs:
             - name: log message
               run: echo "Hello"     
             - name: main branch changes
-              run: echo "main branch change
+              run: echo "main branch change"
         
