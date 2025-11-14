@@ -17,7 +17,7 @@ jobs:
         run: |
           echo "current working directory $PWD"
           echo "moving content of $PWD/python/ecommerce_api to root"
-          mv ./python/ecommerce_api/* .
+          mv ./python/ecommerce_api/ .
           echo "checking the current working directories content."
           ls -ll 
       - name: Set up python 3.11
@@ -27,11 +27,16 @@ jobs:
           architecture: 'x64'
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
-      - name: Installing the dependencies
-        run: pip install -r requirements.txt
-      - name: List dependencies
-        run: pip freeze
-      - name: Linting the project
-        run: |
+      - name: Installing the dependencies and lint project
+        working-directory: ./ecommerce_api
+        run: | 
+          echo "Checking current working directory: $PWD"
+          ls -ll
+          pip install -r requirements.txt
           ruff check .
-          ruff format .
+      # - name: List dependencies
+      #   run: pip freeze
+      # - name: Linting the project
+      #   run: |
+      #     ruff check .
+      #     ruff format .
