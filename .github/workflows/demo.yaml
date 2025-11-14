@@ -4,8 +4,8 @@ on:
     branches:
       - '!main' # don't run workflow for main branch
       - 'dev' 
-    paths-ignore:
-      - '.github/**' #ignore the workflow if the push is on path .github/ 
+    # paths-ignore:
+    #   - '.github/**' #ignore the workflow if the push is on path .github/ 
 jobs:
     test:
         runs-on: ubuntu-latest
