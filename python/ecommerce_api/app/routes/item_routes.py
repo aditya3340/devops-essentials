@@ -47,7 +47,7 @@ def create_item(item: Item, db: Session=Depends(get_db)):
     # duplicate item validation
     if existing_item:
         
-        raise HTTPException(status_code=400, detail=f"Item already exists")
+        raise HTTPException(status_code=400, detail="Item already exists")
  
     # add item to the database
     new_item = db_models.Item(**item_data)
