@@ -11,9 +11,9 @@ POSTGRES_DB = os.getenv("POSTGRES_DB")
 POSTGRES_HOST = os.getenv("POSTGRES_HOST")
 # POSTGRES_PORT = os.getenv("POSTGRES_PORT", "5432")
 
-# SQLALCHEMY_DATABASE_URL = "postgresql://root:password@postgres-service:5432/fastapi"
+SQLALCHEMY_DATABASE_URL = "postgresql://root:password@localhost:5432/fastapi"
 
-SQLALCHEMY_DATABASE_URL = (f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:5432/{POSTGRES_DB}")
+# SQLALCHEMY_DATABASE_URL = (f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:5432/{POSTGRES_DB}")
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
