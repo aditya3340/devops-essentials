@@ -7,4 +7,4 @@ on:
         #     - 'python/ecommerce_api/**'
 jobs:
     reusable-workflow:
-        uses: ./.github/workflows/reusable_workflow.yml
+        uses: ./.github/workflows/reuseable_workflow.yaml
