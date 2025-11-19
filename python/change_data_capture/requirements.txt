@@ -1,0 +1,8 @@
+cffi==2.0.0
+cryptography==46.0.3
+mysql-connector==2.2.9
+mysql-replication==1.0.12
+packaging==25.0
+psycopg2==2.9.11
+pycparser==2.23
+PyMySQL==1.1.2
