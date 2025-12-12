@@ -7,7 +7,7 @@ metadata:
   - resources-finalizers.argocd.argoproj.io
 spec:
   destination:
-    namespace: frontend-dev
+    namespace: frontend
     server: https://kubernetes.default.svc
   project: default
   source:
