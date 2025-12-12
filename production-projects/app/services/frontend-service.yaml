@@ -11,10 +11,13 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: production-projects/app/helm-charts/frontend
+    path: production-projects/app/helm-charts/frontend/
     repoURL: https://github.com/aditya3340/devops-essentials.git
     targetRevision: dev
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+    - ServerSideApply=true
