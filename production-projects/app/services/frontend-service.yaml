@@ -8,7 +8,7 @@ metadata:
 spec:
   destination:
     namespace: frontend-dev
-    server: http://kubernetes.default.svc
+    server: https://kubernetes.default.svc
   project: default
   source:
     path: production-projects/app/helm-charts/frontend
