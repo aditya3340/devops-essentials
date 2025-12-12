@@ -1,0 +1,10 @@
+server:
+  replicas: 1
+repoServer:
+  replicas: 1
+applicationController:
+  replicas: 1
+
+server:
+  service:
+    type: NodePort

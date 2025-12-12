@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{.Release.Name}}-{{.Values.environment}}
+  namespace: {{.Values.namespace}}
+  labels:
+    app: {{.Release.Name}}-{{.Values.environment}}
+spec:
+  selector:
+    app: {{.Release.Name}}-{{.Values.environment}}
+  type: {{.Values.service.serviceType}}
+  ports:
+    - port: {{.Values.service.http.containerPort}}
+      targetPort: {{.Values.service.http.containerPort}}
+      protocol: {{.Values.service.http.protocol}}
+      {{- if eq .Values.service.serviceType "NodePort"}}
+      {{- end}}
+      
