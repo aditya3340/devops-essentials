@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-of-apps
+  namespace: argocd
+  labels:
+    app.kubernetes.io/component: root
+    app.kubernetes.io/managed-by: argocd
+  finalizers:
+  - resources-finalizers.argocd.argoproj.io
+spec:
+  destination:
+    namespace: argocd
+    server: http://kubernetes.default.svc
+  project: default
+  source:
+    path: production-projects/app/services
+    repoURL: https://github.com/aditya3340/devops-essentials.git
+    targetRevision: dev
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - Prune=true
+    - CreateNamespace=true

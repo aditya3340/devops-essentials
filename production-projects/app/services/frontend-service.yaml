@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: frontend
+  namespace: argocd
+  finalizers:
+  - resources-finalizers.argocd.argoproj.io
+spec:
+  destination:
+    namespace: frontend-dev
+    server: http://kubernetes.default.svc
+  project: default
+  source:
+    path: production-projects/app/helm-charts/frontend
+    repoURL: https://github.com/aditya3340/devops-essentials.git
+    targetRevision: dev
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
