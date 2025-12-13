@@ -16,7 +16,7 @@ spec:
     chart: loki-stack
     helm:
       valueFiles:
-        - production-projects/app/cluster-addons/monitoring/helm-values/loki-values.yaml
+        - ./production-projects/app/argo-apps/apps/loki-values.yaml
   
   destination:
     server: https://kubernetes.default.svc
