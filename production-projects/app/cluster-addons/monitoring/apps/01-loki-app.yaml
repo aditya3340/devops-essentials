@@ -4,19 +4,19 @@ kind: Application
 metadata:
   name: loki
   namespace: argocd
-  labels:
+  annotations:
     argocd.argoproj.io/sync-wave: "1"
 spec:
   project: default
 
   source:
     repoURL: https://grafana.github.io/helm-charts
-    targetRevision: 3.1.0
+    targetRevision: 6.49.0
 
     chart: loki
     helm:
       valueFiles:
-        - production-projects/app/cluster-addons/monitoring/helm-values/loki-values.yaml
+        - $values/production-projects/app/cluster-addons/monitoring/helm-values/loki-values.yaml
   
   destination:
     server: https://kubernetes.default.svc
@@ -26,5 +26,5 @@ spec:
     automated:
       prune: true
       selfHeal: true
-    syncPolicy:
+    syncOptions:
     - CreateNamespace=true
