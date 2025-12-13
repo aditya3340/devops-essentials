@@ -1,65 +1,65 @@
-## Corrected values.yaml for the local loki-stack chart
+## Minimal values.yaml for Loki + Grafana (Disabling everything else)
 
-# Fixes: Nil pointer error (looks for .Values.test_pod.enabled)
+# Fixes: Chart required settings
 test_pod:
   enabled: false
-
-# Fixes: Chart dependency error (sometimes uses 'test' instead of 'test_pod')
 test:
   enabled: false
-  
+
+# ----------------- Loki (Core) -----------------
 loki:
   enabled: true
   
-  # Fixes: Wrong type/missing value error (.Values.loki.url)
-  # This is the internal service URL for Grafana to connect to Loki.
+  # Fixes: Datasource template requirement
   url: http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push
-
   datasource:
-    uid: loki-datasource
-  
-  # Your custom settings
-  isDefault: true # Make Loki the default datasource in Grafana
+    uid: loki-datasource 
+
+  isDefault: true
   deployment:
     replicas: 1
   persistence:
     enabled: true
-    size: 1Gi # Your requested size
-    storageClassName: standard # Use a standard StorageClass for Minikube/default cluster setup
+    size: 1Gi
+    storageClassName: standard
 
-promtail:
-  # CRITICAL: Disable Promtail since you will deploy Grafana Alloy separately
-  enabled: true
-
+# ----------------- Grafana (Visualization) -----------------
 grafana:
   enabled: true
-  
-  # Admin credentials (change these to secrets in a real setup!)
   adminUser: admin
-  # You should use a secret to store the password
-  adminPassword: changeme_password 
-
+  adminPassword: changeme_password # CHANGE THIS!
   service:
-    type: NodePort
-    nodePort: 32000
-  
-  # Configure the datasource via sidecar to auto-discover Loki
+    type: NodePort # Keeps your existing NodePort setup
+    nodePort: 32000 
   sidecar:
     datasources:
       enabled: true
-      
-  # Persistence for Grafana data (dashboards, users, etc.)
   persistence:
     enabled: true
-    storageClassName: standard
-    accessModes:
-      - ReadWriteOnce
     size: 1Gi
-    
-  # Enable Ingress (if you have an ingress controller deployed)
-  ingress:
-    enabled: false
-    
-# Allow the whole stack to access resources if needed (e.g., if RBAC is strict)
-serviceAccount:
-  create: true
+
+# ----------------- Disabled Components -----------------
+
+# Disable all metrics collectors/server
+prometheus:
+  enabled: false
+prometheus-pushgateway:
+  enabled: false
+prometheus-node-exporter:
+  enabled: false
+kube-state-metrics:
+  enabled: false
+  
+# Disable all log collectors (You will use Alloy)
+promtail:
+  enabled: false
+filebeat:
+  enabled: false
+fluent-bit:
+  enabled: false
+logstash:
+  enabled: false
+
+# Disable Alerting
+alertmanager:
+  enabled: false
