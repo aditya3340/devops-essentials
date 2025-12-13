@@ -17,11 +17,11 @@ spec:
   source:
     repoURL: https://github.com/aditya3340/devops-essentials.git
     targetRevision: dev
-    path: ./                  # Search from the repository root
+    path: ./                 # Search from the repository root
     directory:
       recurse: true
       include: | 
-        production-projects/app/cluster-addons/monitoring/apps/loki-stack.yaml
+        production-projects/app/services/*.yaml
   syncPolicy:
     automated:
       prune: true
@@ -30,5 +30,4 @@ spec:
     # Use recommended App-of-Apps options:
     - ApplyOutOfSyncOnly=true       # Only sync when actually OutOfSync (reduces traffic)
     - RespectIgnoreDifferences=true # Good practice for managing infrastructure
-
-    #  production-projects/app/services/*.yaml
+  
