@@ -21,7 +21,7 @@ spec:
     directory:
       recurse: true
       include: | 
-        production-projects/app/services/*.yaml
+        production-projects/app/services/frontend-service.yaml
   syncPolicy:
     automated:
       prune: true
