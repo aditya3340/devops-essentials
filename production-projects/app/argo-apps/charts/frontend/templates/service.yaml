@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{.Release.Name}}-{{.Values.environment}}
-  namespace: {{.Release.Namespace}}-{{.Values.environment}}
+  namespace: {{.Release.Namespace}}
   labels:
     app: {{.Release.Name}}-{{.Values.environment}}
 spec:

@@ -3,7 +3,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{.Release.Name}}-{{.Values.environment}}
-  namespace: {{.Release.Namespace}}-{{.Values.environment}}
+  namespace: {{.Release.Namespace}}
   labels:
     app: {{.Release.Name}}-{{.Values.environment}}
   annotations: 
