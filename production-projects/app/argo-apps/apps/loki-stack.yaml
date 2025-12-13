@@ -9,21 +9,21 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/aditya3340/devops-essentials/
-    # 1. Use the Git branch/tag (e.g., 'dev' or 'main')
+    repoURL: https://github.com/aditya3340/devops-essentials
     targetRevision: dev 
-    
-    # 2. Point directly to the directory containing the Chart.yaml file
     path: production-projects/app/argo-apps/charts/loki-stack 
-    
-    # 3. CRITICAL: DO NOT include the 'chart' field here.
     
     helm:
       valueFiles:
-        # 4. Correct path to your values file
-        - argo-apps/apps/loki-stack-values.yaml
+        - values.yaml
       
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
-  # ... syncPolicy etc.
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+    - ServerSideApply=true
