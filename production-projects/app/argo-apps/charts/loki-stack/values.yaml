@@ -11,7 +11,7 @@ loki:
   enabled: true
   
   # Fixes: Datasource template requirement
-  url: http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push
+  url: http://loki.monitoring.svc.cluster.local:3100
   datasource:
     uid: loki-datasource 
 
@@ -59,7 +59,7 @@ kube-state-metrics:
   
 # Disable all log collectors (You will use Alloy)
 promtail:
-  enabled: false
+  enabled: true
 filebeat:
   enabled: false
 fluent-bit:
