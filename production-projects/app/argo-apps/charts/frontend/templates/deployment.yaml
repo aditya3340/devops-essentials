@@ -4,16 +4,16 @@ metadata:
   name: {{ .Release.Name }}-{{.Values.environment}}
   namespace: {{.Release.Namespace}}
   labels:
-    app: {{.Release.Name}}-{{.Values.environment}}
+    app: {{.Release.Name}}
 spec:
   replicas: {{.Values.frontend.replicas}}
   selector:
     matchLabels:
-      app: {{.Release.Name}}-{{.Values.environment}}
+      app: {{.Release.Name}}
   template:
     metadata:
       labels:
-        app: {{.Release.Name}}-{{.Values.environment}}
+        app: {{.Release.Name}}
     spec:
       containers:
         - name: {{.Values.frontend.containerName}}

@@ -4,10 +4,10 @@ metadata:
   name: {{.Release.Name}}-{{.Values.environment}}
   namespace: {{.Release.Namespace}}
   labels:
-    app: {{.Release.Name}}-{{.Values.environment}}
+    app: {{.Release.Name}}
 spec:
   selector:
-    app: {{.Release.Name}}-{{.Values.environment}}
+    app: {{.Release.Name}}
   type: {{.Values.service.serviceType}}
   ports:
     - port: {{.Values.service.http.containerPort}}

@@ -5,7 +5,7 @@ metadata:
   name: {{.Release.Name}}-{{.Values.environment}}
   namespace: {{.Release.Namespace}}
   labels:
-    app: {{.Release.Name}}-{{.Values.environment}}
+    app: {{.Release.Name}}
   annotations: 
     {{- range $key, $value := .Values.ingress.annotations }}
     {{$key}}: {{$value | quote}}
