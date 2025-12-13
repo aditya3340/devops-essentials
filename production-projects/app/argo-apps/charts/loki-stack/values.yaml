@@ -1,4 +1,4 @@
-test:
+test_pod:
   enabled: false
 loki:
   enabled: true
