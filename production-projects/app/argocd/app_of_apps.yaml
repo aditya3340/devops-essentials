@@ -14,9 +14,14 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: production-projects/app/services
     repoURL: https://github.com/aditya3340/devops-essentials.git
     targetRevision: dev
+    path: ./production-projects/app/
+    directory:
+      recurse: true
+      include: |
+        services/*.yaml
+        monitoring/apps/*.yaml
   syncPolicy:
     automated:
       prune: true
