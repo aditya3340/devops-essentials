@@ -60,6 +60,9 @@ kube-state-metrics:
 # Disable all log collectors (You will use Alloy)
 promtail:
   enabled: true
+  config:
+    clients:
+      - url: http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push
 filebeat:
   enabled: false
 fluent-bit:
