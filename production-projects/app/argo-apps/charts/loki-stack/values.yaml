@@ -38,6 +38,13 @@ grafana:
     enabled: true
     size: 1Gi
 
+rbac:
+  create: true
+  
+# Also ensure serviceAccount is created (it probably is, but confirm)
+serviceAccount:
+  create: true
+
 # ----------------- Disabled Components -----------------
 
 # Disable all metrics collectors/server
