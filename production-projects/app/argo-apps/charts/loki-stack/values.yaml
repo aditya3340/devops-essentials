@@ -13,7 +13,7 @@ loki:
   
   # Fixes: Wrong type/missing value error (.Values.loki.url)
   # This is the internal service URL for Grafana to connect to Loki.
-  url: http://loki:3100/loki/api/v1/push
+  url: http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push
 
   datasource:
     uid: loki-datasource
