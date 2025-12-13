@@ -1,4 +1,4 @@
-# monitoring/apps/loki-app.yaml
+# monitoring/apps/loki-stack.yaml (Corrected for Local Chart)
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -10,22 +10,24 @@ spec:
   project: default
 
   source:
-    path: ./production-projects/app/argo-apps/charts/frontend
     repoURL: https://github.com/aditya3340/devops-essentials/
-    targetRevision: 2.10.3
-
-    chart: loki-stack
+    # 1. Use the Git branch/tag where the chart files reside
+    targetRevision: dev 
+    
+    # 2. Point to the local directory where the loki-stack chart was pulled
+    path: production-projects/app/argo-apps/charts/loki-stack 
+    
+    # 3. REMOVE the 'chart' field when using 'path'
+    
     helm:
       valueFiles:
-        - ./loki-stack-values.yaml
-  
+        # 4. Use the full path for the values file
+        - production-projects/app/argo-apps/apps/loki-stack-values.yaml
+      
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
   
   syncPolicy:
     automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-    - CreateNamespace=true
+# ... (rest of sync policy is fine)
