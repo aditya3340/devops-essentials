@@ -38,6 +38,10 @@ grafana:
   adminUser: admin
   # You should use a secret to store the password
   adminPassword: changeme_password 
+
+  service:
+    type: NodePort
+    nodePort: 32000
   
   # Configure the datasource via sidecar to auto-discover Loki
   sidecar:
