@@ -11,7 +11,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: production-projects/app/argo-apps/charts/frontend
+    path: ./production-projects/app/argo-apps/charts/frontend
     repoURL: https://github.com/aditya3340/devops-essentials/
     targetRevision: dev
     helm:
