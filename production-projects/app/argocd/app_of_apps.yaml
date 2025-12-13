@@ -1,3 +1,4 @@
+# app-of-apps.yaml (Optimized)
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -16,16 +17,17 @@ spec:
   source:
     repoURL: https://github.com/aditya3340/devops-essentials.git
     targetRevision: dev
-    path: ./production-projects/app/
+    path: ./                  # Search from the repository root
     directory:
       recurse: true
       include: |
-        services/*.yaml
+        production-projects/app/services/*.yaml
         monitoring/apps/*.yaml
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
-    - Prune=true
-    - CreateNamespace=true
+    # Use recommended App-of-Apps options:
+    - ApplyOutOfSyncOnly=true       # Only sync when actually OutOfSync (reduces traffic)
+    - RespectIgnoreDifferences=true # Good practice for managing infrastructure
