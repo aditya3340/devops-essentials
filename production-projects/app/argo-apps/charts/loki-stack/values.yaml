@@ -1,3 +1,5 @@
+test:
+  enabled: false
 loki:
   enabled: true
   size: 1Gi
