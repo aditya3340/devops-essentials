@@ -11,9 +11,12 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: production-projects/app/helm-charts/frontend/
-    repoURL: https://github.com/aditya3340/devops-essentials.git
+    path: production-projects/app/argo-apps/charts/frontend
+    repoURL: https://github.com/aditya3340/devops-essentials/
     targetRevision: dev
+    helm:
+      valueFiles:
+        - values.yaml
   syncPolicy:
     automated:
       prune: true

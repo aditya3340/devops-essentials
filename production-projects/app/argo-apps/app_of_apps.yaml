@@ -14,13 +14,9 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    repoURL: https://github.com/aditya3340/devops-essentials.git
+    repoURL: https://github.com/aditya3340/devops-essentials/
     targetRevision: dev
-    path: ./production-projects/app/
-    directory:
-      recurse: true
-      include: |
-        services/*.yaml
+    path: production-projects/app/argo-apps/apps
   syncPolicy:
     automated:
       prune: true
