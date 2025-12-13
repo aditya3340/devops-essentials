@@ -20,9 +20,8 @@ spec:
     path: ./                  # Search from the repository root
     directory:
       recurse: true
-      include: |
-        production-projects/app/services/*.yaml
-        monitoring/apps/*.yaml
+      include: | 
+        production-projects/app/cluster-addons/monitoring/apps/loki-stack.yaml
   syncPolicy:
     automated:
       prune: true
@@ -31,3 +30,5 @@ spec:
     # Use recommended App-of-Apps options:
     - ApplyOutOfSyncOnly=true       # Only sync when actually OutOfSync (reduces traffic)
     - RespectIgnoreDifferences=true # Good practice for managing infrastructure
+
+    #  production-projects/app/services/*.yaml
