@@ -2,7 +2,7 @@ loki:
   enabled: true
   size: 1Gi
 promtail:
-  enabled: true
+  enabled: false
 grafana:
   enabled: true
   sidecar:
