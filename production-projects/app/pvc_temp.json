@@ -1,0 +1,11 @@
+"metadata": {
+  "annotations": {
+    "pv.kubernetes.io/bind-completed": "yes",
+    "volume.beta.kubernetes.io/storage-provisioner": "docker.io/hostpath"
+  },
+  "name": "loki-stack-grafana",
+  "namespace": "monitoring",
+  "resourceVersion": "...",
+  "uid": "..."
+  // The "finalizers" section is completely gone
+},
