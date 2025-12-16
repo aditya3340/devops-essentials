@@ -11,13 +11,18 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    repoURL: https://grafana.github.io/helm-charts
-    chart: loki
-    targetRevision: 6.18.0
-    helm:
-      releaseName: loki
-      valueFiles:
-        - app-values/loki-values.yaml
+    - repoURL: https://grafana.github.io/helm-charts
+      chart: loki
+      targetRevision: 6.18.0
+      helm:
+        releaseName: loki
+        valueFiles:
+          - $values/production-projects/apps/app-values/loki-values.yaml
+          
+    - repoURL: https://github.com/aditya3340/devops-essentials/
+      targetRevision: dev
+      ref: values
+
   syncPolicy:
     automated:
       prune: true
