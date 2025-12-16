@@ -17,7 +17,7 @@ spec:
       helm:
         releaseName: loki
         valueFiles:
-          - $values/production-projects/app/argo-apps/apps/app-values/loki-values.yaml
+          - $values/production-projects/app/argo-apps/apps/loki-values.yaml
           
     - repoURL: https://github.com/aditya3340/devops-essentials/
       targetRevision: dev
