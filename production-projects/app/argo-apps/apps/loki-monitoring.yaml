@@ -15,13 +15,21 @@ spec:
     repoURL: https://github.com/aditya3340/devops-essentials/
     targetRevision: dev
     helm:
+      releaseName: loki
       valueFiles:
         - values.yaml
+        - overrides.yaml
 
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    retry:
+      limit: 5
+      backoff:
+        duration: "5s"
+        factor: 2
+        maxDuration: "3m"
     syncOptions:
     - CreateNamespace=true
     - ApplyOutOfSyncOnly=true
