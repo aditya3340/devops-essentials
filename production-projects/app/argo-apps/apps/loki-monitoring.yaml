@@ -11,17 +11,12 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    - repoURL: https://grafana.github.io/helm-charts
-      chart: loki
-      targetRevision: 6.18.0
-      helm:
-        releaseName: loki
-        valueFiles:
-          - $values/production-projects/app/argo-apps/apps/loki-values.yaml
-          
-    - repoURL: https://github.com/aditya3340/devops-essentials/
-      targetRevision: dev
-      ref: values
+    path: ./production-projects/app/helm-charts/loki
+    repoURL: https://github.com/aditya3340/devops-essentials/
+    targetRevision: dev
+    helm:
+      valueFiles:
+        - values.yaml
 
   syncPolicy:
     automated:
