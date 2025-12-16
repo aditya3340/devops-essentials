@@ -29,6 +29,21 @@ loki:
 
 minio:
   enabled: true
+
+monitoring:
+  dashboards:
+    enabled: false
+  serviceMonitor:
+    enabled: false
+    metricsInstance: {}
+  selfMonitoring:
+    enabled: false
+    tenant:
+      name: ""
+    grafanaAgent:
+      priorityClassName: ""
+    podLogs: {}
+  rules: {}
       
 deploymentMode: SingleBinary
 singleBinary:
